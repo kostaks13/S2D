@@ -26,10 +26,9 @@ jobs:
         pip install pillow  # PIL için
     
     - name: Create directories
-      shell: cmd
       run: |
-        if not exist Logs mkdir Logs
-        if not exist Results mkdir Results
+        New-Item -ItemType Directory -Force -Path Logs | Out-Null
+        New-Item -ItemType Directory -Force -Path Results | Out-Null
     
     - name: Build EXE
       run: |
@@ -37,15 +36,14 @@ jobs:
       continue-on-error: false
     
     - name: Check if EXE exists
-      shell: cmd
       run: |
-        if exist dist\AFT_Sizing_Automation.exe (
-          echo ✅ EXE başarıyla oluşturuldu
-          dir dist\AFT_Sizing_Automation.exe
-        ) else (
-          echo ❌ EXE oluşturulamadı!
-          exit /b 1
-        )
+        if (Test-Path "dist\AFT_Sizing_Automation.exe") {
+          Write-Host "✅ EXE başarıyla oluşturuldu"
+          Get-Item "dist\AFT_Sizing_Automation.exe"
+        } else {
+          Write-Host "❌ EXE oluşturulamadı!"
+          exit 1
+        }
     
     - name: Upload EXE
       uses: actions/upload-artifact@v4
