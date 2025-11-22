@@ -23,6 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
+        pip install pillow  # PIL için
     
     - name: Create directories
       run: |
@@ -31,7 +32,18 @@ jobs:
     
     - name: Build EXE
       run: |
-        pyinstaller --name=AFT_Sizing_Automation --onefile --windowed --noconfirm --clean --add-data "Logs;Logs" --add-data "Results;Results" --hidden-import=customtkinter --hidden-import=openpyxl --hidden-import=win32com.client --hidden-import=pythoncom --hidden-import=tkinterdnd2 --hidden-import=PIL --collect-all=customtkinter --collect-all=openpyxl s2dgui4.py
+        pyinstaller --name=AFT_Sizing_Automation --onefile --windowed --noconfirm --clean --add-data "Logs;Logs" --add-data "Results;Results" --hidden-import=customtkinter --hidden-import=openpyxl --hidden-import=win32com.client --hidden-import=pythoncom --hidden-import=tkinterdnd2 --hidden-import=PIL --hidden-import=PIL.Image --hidden-import=PIL.ImageDraw --hidden-import=PIL.ImageFont --hidden-import=PIL.ImageTk --hidden-import=urllib.parse --hidden-import=logging.handlers --collect-all=customtkinter --collect-all=openpyxl --collect-all=PIL s2dgui4.py
+      continue-on-error: false
+    
+    - name: Check if EXE exists
+      run: |
+        if exist dist\AFT_Sizing_Automation.exe (
+          echo "✅ EXE başarıyla oluşturuldu"
+          dir dist\AFT_Sizing_Automation.exe
+        ) else (
+          echo "❌ EXE oluşturulamadı!"
+          exit 1
+        )
     
     - name: Upload EXE
       uses: actions/upload-artifact@v4
