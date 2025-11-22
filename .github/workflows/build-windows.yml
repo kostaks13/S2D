@@ -26,6 +26,7 @@ jobs:
         pip install pillow  # PIL için
     
     - name: Create directories
+      shell: cmd
       run: |
         if not exist Logs mkdir Logs
         if not exist Results mkdir Results
@@ -36,13 +37,14 @@ jobs:
       continue-on-error: false
     
     - name: Check if EXE exists
+      shell: cmd
       run: |
         if exist dist\AFT_Sizing_Automation.exe (
-          echo "✅ EXE başarıyla oluşturuldu"
+          echo ✅ EXE başarıyla oluşturuldu
           dir dist\AFT_Sizing_Automation.exe
         ) else (
-          echo "❌ EXE oluşturulamadı!"
-          exit 1
+          echo ❌ EXE oluşturulamadı!
+          exit /b 1
         )
     
     - name: Upload EXE
