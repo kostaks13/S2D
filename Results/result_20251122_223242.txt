@@ -1,0 +1,12 @@
+CATIA Automation Suite - İşlem Sonuçları
+==================================================
+
+Tarih: 2025-11-22 22:32:42
+Dosya: test_data.xlsx
+Sayfa: Test Data
+
+Toplam İşlenen: 20
+Başarılı: 120
+Hatalar: 0
+Başarı Oranı: 600.0%
+Geçen Süre: 00:00

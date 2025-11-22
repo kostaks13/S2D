@@ -1,0 +1,12 @@
+CATIA Automation Suite - İşlem Sonuçları
+==================================================
+
+Tarih: 2025-11-22 21:12:55
+Dosya: Mehmet+Ozan+Halac+-+SWOT.xlsx
+Sayfa: Visualization Data
+
+Toplam İşlenen: 50
+Başarılı: 9
+Hatalar: 0
+Başarı Oranı: 18.0%
+Geçen Süre: 00:02

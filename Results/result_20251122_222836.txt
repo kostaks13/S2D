@@ -1,0 +1,12 @@
+CATIA Automation Suite - İşlem Sonuçları
+==================================================
+
+Tarih: 2025-11-22 22:28:36
+Dosya: STK_Yatırımlarım.xlsx
+Sayfa: Detay_Dağılım
+
+Toplam İşlenen: 35
+Başarılı: 41
+Hatalar: 9
+Başarı Oranı: 117.1%
+Geçen Süre: 00:00

@@ -1,0 +1,16 @@
+# CATIA Automation Suite v4.5 Pro - Gereksinimler
+
+# GUI Framework
+customtkinter>=5.2.0
+
+# Excel İşlemleri (Önerilen - Daha Hızlı)
+openpyxl>=3.1.2
+
+# Windows Entegrasyonu (CATIA & Excel için - Windows'ta gerekli)
+pywin32>=306
+
+# Opsiyonel: Drag & Drop desteği
+# tkinterdnd2>=0.3.0
+
+# Not: Python 3.8+ gerektirir
+

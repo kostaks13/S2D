@@ -1,0 +1,41 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:  # Manuel tetikleme
+  push:
+    tags:
+      - 'v*'  # Tag ile tetikleme
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+    
+    - name: Create directories
+      run: |
+        if not exist Logs mkdir Logs
+        if not exist Results mkdir Results
+    
+    - name: Build EXE
+      run: |
+        pyinstaller --name=AFT_Sizing_Automation --onefile --windowed --noconfirm --clean --add-data "Logs;Logs" --add-data "Results;Results" --hidden-import=customtkinter --hidden-import=openpyxl --hidden-import=win32com.client --hidden-import=pythoncom --hidden-import=tkinterdnd2 --hidden-import=PIL --collect-all=customtkinter --collect-all=openpyxl s2dgui4.py
+    
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: AFT_Sizing_Automation.exe
+        path: dist/AFT_Sizing_Automation.exe
+
