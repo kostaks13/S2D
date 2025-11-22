@@ -27,8 +27,7 @@ jobs:
     
     - name: Create directories
       run: |
-        New-Item -ItemType Directory -Force -Path Logs | Out-Null
-        New-Item -ItemType Directory -Force -Path Results | Out-Null
+        python -c "import os; os.makedirs('Logs', exist_ok=True); os.makedirs('Results', exist_ok=True)"
     
     - name: Build EXE
       run: |
